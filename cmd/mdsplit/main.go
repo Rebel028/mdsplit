@@ -7,6 +7,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// version is set at link time via -ldflags "-X 'main.version=...'"
+var version = "dev"
+
 var opts splitter.Options
 
 var rootCmd = &cobra.Command{
@@ -20,6 +23,8 @@ var rootCmd = &cobra.Command{
 }
 
 func main() {
+	rootCmd.Version = version
+
 	rootCmd.Flags().IntVarP(&opts.MaxLevel, "max-level", "l", 1, "maximum heading level to split (1-6)")
 	rootCmd.Flags().BoolVarP(&opts.TOC, "table-of-contents", "t", false, "generate a table of contents")
 	rootCmd.Flags().BoolVarP(&opts.Navigation, "navigation", "n", false, "add a navigation footer on each page")
