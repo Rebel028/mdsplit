@@ -1,4 +1,4 @@
-module mdsplit
+module github.com/Rebel028/mdsplit
 
 go 1.25
 
